@@ -1,6 +1,7 @@
 import React from 'react';
 import Label from '../Label';
 import Input from '../Input';
+import GenderImage from '../GenderImage';
 
 class NovoUsuario extends React.Component{
     constructor(props){
