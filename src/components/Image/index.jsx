@@ -28,7 +28,6 @@ class Image extends React.Component	{
 			backgroundSize:	this.calcularTamanho(),												
 			width:	`${this.props.width}px`,
 			height:	`${this.props.height}px`,
-			//display: 'table',
             margin: '0 auto'
         }
     }
