@@ -2,6 +2,7 @@ import React from 'react';
 import Image from '../Image';
 import ButtonImage from '../ButtonImage';
 import ManipularEvento from './ManipularEvento';
+import { NONAME } from 'dns';
 
 class ImageScroller extends React.Component {
     constructor(props){
@@ -41,6 +42,64 @@ class ImageScroller extends React.Component {
             </li>
         )
     }
+
+
+    renderizarImagens(){
+        const ms = this.state.manipularEvento.toqueEmExecucao ? '100ms' : '800ms';
+        
+        const estilo = {
+            WebkitTransitionDuration: ms, // Safari e chrome
+            MsTransitionDuration: ms, // IE
+            MozTransitionDuration: ms, // Firefox
+            OTransitionDuration: ms, // Opera
+            transitionDuration: ms, // Nativo W3C
+
+            listStyleType: 'none',
+            margin: '0',
+            padding: '0',
+            position: 'relative',
+            width: `${this.props.elementos.length}px`,
+            left: `${this.state.manipularEvento.left}px`
+        }
+
+        const lista = this.props.elementos.map(
+            (entry, index) => this.renderizarImagem(entry, index)
+        )
+
+        return(
+            <ul style={estilo}>
+                {lista}
+            </ul>
+        )
+    }
+
+    renderizarSelecionado(){
+        return(
+            <span
+                style={{
+                    float: 'left',
+                    width: '140px',
+                    height: '160px',
+                    marginLeft: '42px',
+                    backgroundColor: '#00C853',
+                    position: 'relative',
+                    zIndex: -2
+                }}
+            >
+
+            </span>
+        )
+    }
+
+    renderizarButtonImage(posicao){
+        return(
+            <ButtonImage
+                posicao={posicao}
+            />
+        )
+    }
+
+  
 }
 
 export default ImageScroller;
